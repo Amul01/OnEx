@@ -9,6 +9,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+
+<% String enr = request.getParameter("enr"); %>
+<jsp:useBean id="userdata" class="data"></jsp:useBean>
+<jsp:setProperty name="userdata" property="enr" value=${userdata.enr} />
+
+
 <%
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/onex","root","");

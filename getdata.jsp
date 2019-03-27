@@ -9,23 +9,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 
-<script type="text/javascript" src="timeFormat.js"></script> 
-
 <style>
 .hide{
 	visibility: hidden;
 }
 </style>
-<script src="timer.js"></script>
+
 </head>
-
 <body>
-<p id="time"></p>
-<p id="distance"></p>
-<p id="date_string"></p>
-
-<jsp:useBean id="userdata" class="data"></jsp:useBean>
-<p>Welcome <jsp:getProperty property="name" name="userdata" /></p>
 
 <%
 	Class.forName("com.mysql.cj.jdbc.Driver");
@@ -56,20 +47,12 @@
 		i++;
 	}
 	con.close();
+	
+	session.setAttribute("index", 0);
+	session.setAttribute("ques", ques);
+	session.setAttribute("ques", options);
+	session.setAttribute("corr", corr);
+	session.setAttribute("indexarray", q);
+	session.setAttribute("sub_id", request.getParameter("sub_id"));
+	response.sendRedirect("onebyone_question.jsp");
 %>
-
-<%for(i=0;i<5;i++) {%>
-<p>Question <%= i+1 %> - </p><%= ques[i] %><br>
-<form action="answers.jsp?sub_id=<%=request.getParameter("sub_id") %>" method="post">
-	<input type="radio" name=<%=i %> value="1"/> <%=options[i][0] %><br>
-	<input type="radio" name=<%=i %> value="2"/> <%=options[i][1] %><br>
-	<input type="radio" name=<%=i %> value="3"/> <%=options[i][2] %><br>
-	<input type="radio" name=<%=i %> value="4"/> <%=options[i][3] %><br>
-	<input type="radio" name=<%=i %> value="5" class="hide" checked/>
-<%}
-session.setAttribute("corr_ans_array",q);%>
-<input type="submit" value="Submit" id="send" />
-</form>
-
-</body>
-</html>

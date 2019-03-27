@@ -88,5 +88,10 @@ out.println("\nYour score in "+sub+" is "+score); %><br>
 <form action="getscorecard.jsp?sub_id=<%=request.getParameter("sub_id") %>">
 	<input type="submit" value="Score Card" />
 </form>
+
+<form action="index.html">
+	<input type="submit" value="Logout" />
+</form>
+
 </body>
 </html>
