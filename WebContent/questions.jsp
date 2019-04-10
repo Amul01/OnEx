@@ -54,8 +54,11 @@
 		i++;
 	}
 	con.close();
+	
 %>
-
+<form action="logout.jsp">
+	<input type="submit" value="Logout" />
+</form>
 <%for(i=0;i<5;i++) {%>
 <p>Question <%= i+1 %> - </p><%= ques[i] %><br>
 <form action="answers.jsp?sub_id=<%=request.getParameter("sub_id") %>" method="post">
