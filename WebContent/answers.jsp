@@ -21,7 +21,7 @@
 	Integer q[] = (Integer[])session.getAttribute("corr_ans_array");
 	String corr[]=new String[5];
 	
-	out.println(Arrays.toString(q));
+	//out.println(Arrays.toString(q));
 	
 	int i=0;
 	while(rs.next()){
@@ -32,6 +32,8 @@
 %>
 <br>
 <%
+//int p = Integer.parseInt((String)session.getAttribute("qc"));
+//out.println(p);
 String opt[]=new String[5];
 int score=0,na=0,ca=0,inca=0;
 for(i=0;i<5;i++){
@@ -46,11 +48,13 @@ for(i=0;i<5;i++){
 out.println("\nYour score in "+sub+" is "+score); %><br>
 <%out.println("\nQuestion unattempted = "+na); %><br>
 <%out.println("\nNo.of correct answers = "+ca); %><br>
-<%out.println("\nNo.of incorrect answers = "+(inca-na)); %><br>
+<%out.println("\nNo.of incorrect answers = "+(inca-na)); %><br><br>
 
 <%
-	String enr=(String)(session.getAttribute("sess_name"));
-	out.println("Current enrolment number = "+enr);
+	String name=(String)(session.getAttribute("sess_name"));
+	//out.println("Current user = "+name);
+	
+	String enr = (String)(session.getAttribute("sess_enr"));
 	%><br><%
 	/*Statement st2 = con.createStatement();
 	st2.executeUpdate("UPDATE students SET '"+sub+"' = "+score+" WHERE enrolment_no = '"+enr+"'");*/
@@ -81,7 +85,7 @@ out.println("\nYour score in "+sub+" is "+score); %><br>
 	st.executeUpdate("UPDATE students SET total_score = "+total_score+" WHERE enrolment_no = '"+enr+"'");
 %>
 
-<form action="homepage.html">
+<form action="homepage.jsp">
 	<input type="submit" value="Take other tests" />
 </form>
 
@@ -89,9 +93,9 @@ out.println("\nYour score in "+sub+" is "+score); %><br>
 	<input type="submit" value="Score Card" />
 </form>
 
-<form action="logout.jsp">
-	<input type="submit" value="Logout" />
-</form>
+<form action="logout.jsp" style="margin-left:85%; margin-top:-15%;">
+		<input type="submit" value="Logout" />
+	</form>
 
 </body>
 </html>

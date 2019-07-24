@@ -8,7 +8,7 @@ var date = curr_datetime.getDate();
 
 month = month + 1;
 seconds = seconds + 1;
-minutes = minutes + 20;	//change again
+minutes = minutes + 1;	//change again
 
 if(minutes > 60){
 	hours = hours + 1;
@@ -21,7 +21,7 @@ var limit=new Date(date_string).getTime();
 var x=setInterval(function(){	
 	var now=new Date().getTime();
 	var distance=limit-now;
-	document.getElementById("distance").innerHTML = distance;
+	//document.getElementById("distance").innerHTML = distance;
 	
 	var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -30,7 +30,7 @@ var x=setInterval(function(){
 	document.getElementById("time").innerHTML = hours + "h " + minutes + "m " + seconds + "s";
 	if (distance < 0 || (minutes == 0 && seconds == 0)) {
 	    clearInterval(x);
-	    document.getElementById("time").innerHTML = "EXPIRED";
+	    document.getElementById("time").innerHTML = "TIME UP !!";
 	    document.getElementById("send").click();
 	}
 },1000);

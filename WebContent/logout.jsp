@@ -8,8 +8,9 @@
 </head>
 <body>
 <%
-	session.invalidate();
-	//session.setAttribute("sess_name", " ");
+	//session.invalidate();
+	session.setAttribute("sess_name", null);
+	session.setAttribute("sess_enr", null);
 	response.sendRedirect("index.html");
 %>
 </body>

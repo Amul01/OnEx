@@ -32,9 +32,9 @@
 			ps2.setString(5, request.getParameter("pw"));
 			ps2.setInt(6,0);
 			ps2.execute();
-			out.println("Welcome " + request.getParameter("name"));
-			response.sendRedirect("homepage.html");
-			session.setAttribute("sess_name", request.getParameter("enr"));
+			session.setAttribute("sess_name", request.getParameter("name"));
+			session.setAttribute("sess_enr", request.getParameter("enr"));
+			response.sendRedirect("homepage.jsp");
 		}
 		else out.println("Already signed up");
 	}
@@ -51,9 +51,9 @@
 			ps2.setString(2, request.getParameter("cno"));
 			ps2.setString(3, request.getParameter("pw"));
 			ps2.execute();
-			out.println("Welcome " + request.getParameter("name"));
+			session.setAttribute("sess_name", request.getParameter("name"));
+			session.setAttribute("sess_cno", request.getParameter("cno"));
 			response.sendRedirect("homepagefac.html");
-			session.setAttribute("sess_name", request.getParameter("cno"));
 		}
 		else out.println("Already signed up");
 	}

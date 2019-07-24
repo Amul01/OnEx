@@ -14,12 +14,15 @@
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/onex","root","");
 	Statement st = con.createStatement();
-	String enr=(String)(session.getAttribute("sess_name"));
-	out.println("Current user - "+enr);
-	out.println("Aa gaya");
-	ResultSet rs = st.executeQuery("SELECT * FROM scores where enrolment_no = '"+enr+"' and sub_id = '"+request.getParameter("sub_id")+"'");
-	while(rs.next()){
-		out.println("Printing");
+	String enr=(String)(session.getAttribute("sess_enr"));
+	//out.println("Current user - " + enr);
+	//out.println("Aa gaya");
+	// and sub_id = '"+request.getParameter("sub_id")+"'
+			
+	ResultSet rs = st.executeQuery("SELECT * FROM scores where enrolment_no = '"+enr+"'");
+	rs.afterLast();
+	while(rs.previous()){
+		//out.println("Printing");
 		out.println(rs.getInt(3) + "---" + rs.getInt(4));%><br><%
 	}
 %>
